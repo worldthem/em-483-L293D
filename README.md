@@ -3,10 +3,13 @@ Connect Bipolar stepper motor(4 wires)  em 483 to L293D
 
 First download and install library from here https://github.com/worldthem/28bYJ48
 
+
+![alt text](https://raw.githubusercontent.com/worldthem/em-483-L293D/master/arduino-bipolar-stepper-motor-control-circuit.png "EM 483 and L293D")
+
 ```
 
 
-#define switchCW A2
+#define ButonControl 4
 #include <28BYJ48.h>
 
 
@@ -34,27 +37,22 @@ void setup() {
   motor.set_time_between_pulses(2000); // recommended
   motor.set_conversion_function(f1);
   motor.set_on_destination_reached(on_reached);
-  pinMode(switchCW,INPUT_PULLUP);// CW push button pin as input
+  pinMode(ButonControl, INPUT_PULLUP);// push button pin as input
  Serial.begin(9600);
 }
 
 void loop() {
- dataBtn = !digitalRead(switchCW);
-
+ dataBtn = !digitalRead(ButonControl);
  
-  // put your main code here, to run repeatedly:
-
-  if(millis() % 20000 == 0){
+ if(millis() % 20000 == 0){
         motor.set_destination(degreRotate);
-        motor.status = CW;
+        motor.status = CW; // OR CCV to rotate back
   }
        
 
   if( dataBtn== 1) 
   {
-        Serial.println("Button presed");
-      // motor.set_destination(degreRotate);
-        motor.status = STOP;
+       motor.status = STOP;
    }
   
  motor.update(); // commit rotation 
