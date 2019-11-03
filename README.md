@@ -3,6 +3,8 @@ Connect Bipolar stepper motor(4 wires)  em 483 to L293D
 
 First download and install library from here https://github.com/worldthem/28bYJ48
 
+Aftar conceting this, the driver get very hot because this stepper motor is 1 Amp, and driver can give 0.6Amp per chanel better to get more powerful driver like L298N what can give up to 2Amp pe chanel. 
+
 
 ![alt text](https://raw.githubusercontent.com/worldthem/em-483-L293D/master/arduino-bipolar-stepper-motor-control-circuit.png "EM 483 and L293D")
 
